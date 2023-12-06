@@ -1,7 +1,7 @@
 ### Passo a passo
 Clone Repositório
 ```sh
-git clone -b https://github.com/especializati/setup-docker-laravel.git
+git clone https://github.com/raulmarx/desafio-innyx.git
 ```
 
 
