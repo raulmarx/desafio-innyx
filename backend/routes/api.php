@@ -18,8 +18,7 @@ Route::get('/', function () {
 
 
 Route::post('/login', [AuthController::class, 'login']);
-Route::get('/verify', [AuthController::class, 'verify']);
-
+Route::get('/register', [UserController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('api');
 Route::get('/permissions', [PermissionController::class, 'index']);
 Route::get('/roles', [RoleController::class, 'index']);

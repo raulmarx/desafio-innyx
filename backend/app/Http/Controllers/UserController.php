@@ -64,7 +64,7 @@ class UserController extends Controller
         
     }
 
-    public function createSuperUser(StoreUpdateUserRequest $request)
+    public function register(StoreUpdateUserRequest $request)
     {
 
         $data = $request->validated();
