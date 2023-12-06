@@ -61,6 +61,16 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        
+    }
+
+    public function createSuperUser(StoreUpdateUserRequest $request)
+    {
+
+        $data = $request->validated();
+        $data['password'] = bcrypt($request->password);
+        $user = User::create($data);
+
+        return new UserResource($user);
     }
 }

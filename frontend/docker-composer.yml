@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  frontend:
+    build: .
+    volumes:
+      - .:/frontend
+    working_dir: /frontend
+    ports:
+      - 8080:8080
+    command: ['npm','dev']

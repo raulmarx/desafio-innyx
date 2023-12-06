@@ -18,11 +18,12 @@ Route::get('/', function () {
 
 
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::get('/verify', [AuthController::class, 'verify']);
+
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('api');
 Route::get('/permissions', [PermissionController::class, 'index']);
 Route::get('/roles', [RoleController::class, 'index']);
-Route::get('/roles-users', [RolesUsersController::class, 'index']);
-
-Route::apiResource('/users', UserController::class)->middleware('auth:sanctum');
-Route::apiResource('/categories', CategoryController::class)->middleware('auth:sanctum');
-Route::apiResource('/products', ProductController::class)->middleware('auth:sanctum');
+Route::get('/products/category/{id}', [ProductController::class, 'getByCategory'])->middleware('api');
+Route::apiResource('/users', UserController::class)->middleware('api');
+Route::apiResource('/categories', CategoryController::class)->middleware('api');
+Route::apiResource('/products', ProductController::class)->middleware('api');//

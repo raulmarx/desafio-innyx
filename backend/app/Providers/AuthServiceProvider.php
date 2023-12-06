@@ -25,9 +25,12 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::before(function (User $user, $permissions) {
-            if ($user->permissions()->contains($permissions)) {
-                return true;
+            // Verifica se há uma interseção entre as permissões do usuário e as necessárias
+            if ($user->permissions()->intersect($permissions)->isNotEmpty()) {
+                return true; // Permite acesso se houver uma interseção
             }
+        
+            return false; // Impede o acesso por padrão
         });
         
     }

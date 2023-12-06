@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdateProductRequest;
 use App\Http\Resources\ProductResource;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
@@ -27,6 +29,9 @@ class ProductController extends Controller
     {
         $this->authorize('Create');
         $data = $request->validated();
+        if ($request->image) {
+            $data['image'] = $request->image->store('products');
+        }
         $product = Product::create($data);
 
         return new ProductResource($product);
@@ -38,9 +43,9 @@ class ProductController extends Controller
     public function show(string $id)
     {
         $this->authorize('View');
-        $product = Product::findOrFail($id);
+        $products =Product::findOrFail($id);
 
-        return new ProductResource($product);
+        return response()->json(['products' => $products]);
     }
 
     /**
@@ -50,8 +55,10 @@ class ProductController extends Controller
     {
         $this->authorize('Edit');
         $product = Product::findOrFail($id);
-
         $data = $request->validated();
+        if ($request->image) {
+            $data['image'] = $request->image->store('products');
+        }
         $product->update($data);
 
         return new ProductResource($product);
@@ -60,12 +67,20 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         $this->authorize('Delete');
         $product = Product::findOrFail($id);
 
         $product->delete();
         return response()->json(null, Response::HTTP_NO_CONTENT);
+    }
+
+
+    public function getByCategory($id)
+    {
+        $products = Product::where('category_id', $id)->get();
+
+        return response()->json(['data' => $products]);
     }
 }

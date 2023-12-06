@@ -6,6 +6,8 @@ use App\Http\Requests\AuthRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\JWT;
 
 class AuthController extends Controller
 {
@@ -13,10 +15,9 @@ class AuthController extends Controller
     {
         $credentials = $request->validated();
 
-        if (Auth::attempt($credentials)) {
+        if ($token = Auth::attempt($credentials)) {
             $user = Auth::user();
-            $token = $user->createToken('JWT')->plainTextToken;
-
+            
             return response()->json(['token' => $token, 'user' => $user]);
         }
 
@@ -27,8 +28,8 @@ class AuthController extends Controller
 
     public function logout()
     { 
-        auth()->user()->currentAccessToken()->delete();
-
+        auth()->logout();
         return response()->json(['message' => 'Logout realizado com sucesso.']);
     }
+    
 }

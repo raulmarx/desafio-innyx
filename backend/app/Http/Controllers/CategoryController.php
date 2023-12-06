@@ -27,7 +27,8 @@ class CategoryController extends Controller
      */
     public function store(StoreUpdateCategoryRequest $request)
     {
-        $this->authorize('Create');
+        
+        $this->authorize('View');
         $data = $request->validated();
         $category = Category::create($data);
 
