@@ -70,12 +70,6 @@ Suba os containers do projeto
 docker-compose up -d
 ```
 
-
-Acesse o container app
-```sh
-docker-compose exec app bash
-```
-
 Instale as dependências do projeto
 ```sh
 npm install
