@@ -12,6 +12,10 @@
                     <li class="nav-item">
                         <router-link :to="{ name: 'about' }" class="nav-link"> Sobre</router-link>
                     </li>                    
+                    <li class="nav-item">
+                        <button class="nav-link" @click="logout">Sair</button>
+                        
+                    </li>                    
                 </ul>
             </div>
         </nav>
@@ -20,7 +24,13 @@
 </template>
 
 <script setup lang="ts">
+import http from '../../services/http';
+import router from '@/router';
 
+async function logout(){
+    await http.post('/logout')
+    router.push('/login')
+}
 </script>
 
 <style scoped>

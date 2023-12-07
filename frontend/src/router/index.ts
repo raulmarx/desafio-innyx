@@ -8,6 +8,7 @@ import CreateUpdateCategoryProductView from '../views/CreateUpdateCategoryProduc
 import Layout from '../components/layout/Layout.vue';
 import LayoutInterno from '../components/layout/LayoutInterno.vue';
 import routes from '../router/routes.js';
+import EditUserView from '@/views/EditUserView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -65,14 +66,14 @@ const router = createRouter({
           auth: true
         }
       },
-      // {
-      //   path: '/edit-user',
-      //   name: 'edit-user',
-      //   component: ProductView,
-      //   meta: {
-      //     auth: true
-      //   }
-      // },
+      {
+        path: '/edit-user/:id',
+        name: 'edit-user',
+        component: EditUserView,
+        meta: {
+          auth: true
+        }
+      },
       // {
       //   path: '/delete-user',
       //   name: 'delete-user',

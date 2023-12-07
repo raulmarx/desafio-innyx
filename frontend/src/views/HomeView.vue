@@ -72,13 +72,13 @@ async function udpadePermissions(id:number){
 async function editUser(id:number){
 
   
-  router.push({ name: 'editar-user', params: { id: id } });
+  router.push({ name: 'edit-user', params: { id: id } });
 }
 async function deleteUser(id:number){
-
-  
-  router.push({ name: 'delete-user', params: { id: 123 } });
+  await http.delete(`/users/${id}`).then(res => {if(res)fetchUsers})
 }
+
+
 </script>
 
 <style scoped>

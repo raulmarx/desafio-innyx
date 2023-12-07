@@ -1,5 +1,5 @@
 <template>
-  <div class="container login-container">
+  <div class="container login-container center">
     <div class="row">
       <div class="login-form-1">
         <h3>Login</h3>
@@ -11,7 +11,8 @@
             <input v-model="user.password" type="password" class="form-control inputs" placeholder="Your Password *" />
           </div>
           <div class="form-group">
-            <input type="submit" class="btnSubmit" value="Login" />
+            <input type="submit" class="btn btn-primary w-100 mb-1 mt-2" value="Sign in" />
+            <input type="submit" class="btn btn-light w-100" value="Sign up" @click="signUp" />
           </div>
           <div class="form-group">
             <a href="#" class="ForgetPwd">Forget Password?</a>
@@ -45,6 +46,12 @@ async function login() {
   } catch (error) {
     console.error(error?.response?.data);
   }
+}
+
+async function signUp() {
+
+router.push({ name: 'register' });
+
 }
 </script>
 
