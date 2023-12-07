@@ -74,3 +74,8 @@ Instale as dependências do projeto
 ```sh
 npm install
 ```
+
+Para rodar a aplicação 
+```sh
+vite
+```
