@@ -13,6 +13,7 @@ import EditUserView from '@/views/EditUserView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    { path: '', alias: '/', redirect:'/login' },
     {
       path: '/login',
       name: 'login',
@@ -74,70 +75,6 @@ const router = createRouter({
           auth: true
         }
       },
-      // {
-      //   path: '/delete-user',
-      //   name: 'delete-user',
-      //   component: ProductView,
-      //   meta: {
-      //     auth: true
-      //   }
-      // },
-      // {
-      //   path: '/create-user',
-      //   name: 'create-user',
-      //   component: ProductView,
-      //   meta: {
-      //     auth: true
-      //   }
-      // },
-      // {
-      //   path: '/create-product',
-      //   name: 'create-product',
-      //   component: ProductView,
-      //   meta: {
-      //     auth: true
-      //   }
-      // },
-      // {
-      //   path: '/edit-product',
-      //   name: 'edit-product',
-      //   component: ProductView,
-      //   meta: {
-      //     auth: true
-      //   }
-      // },
-      // {
-      //   path: '/delete-product',
-      //   name: 'delete-product',
-      //   component: ProductView,
-      //   meta: {
-      //     auth: true
-      //   }
-      // },
-      // {
-      //   path: '/create-category',
-      //   name: 'create-category',
-      //   component: ProductView,
-      //   meta: {
-      //     auth: true
-      //   }
-      // },
-      // {
-      //   path: '/edit-category',
-      //   name: 'edit-category',
-      //   component: ProductView,
-      //   meta: {
-      //     auth: true
-      //   }
-      // },
-      // {
-      //   path: '/delete-category',
-      //   name: 'delete-category',
-      //   component: ProductView,
-      //   meta: {
-      //     auth: true
-      //   }
-      // },
       ]
     },
 
