@@ -56,6 +56,16 @@ Gere a key do projeto Laravel
 php artisan key:generate
 ```
 
+Gere a key do JWT
+```sh
+php artisan jwt:generate
+```
+
+Gera as permissoes e regras e usarios 
+```sh
+php artisan db:seed
+```
+
 
 Acesse o projeto
 [http://localhost:8989](http://localhost:8989)
